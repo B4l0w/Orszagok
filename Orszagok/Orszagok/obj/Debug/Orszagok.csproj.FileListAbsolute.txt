@@ -1,0 +1,7 @@
+C:\Users\Tanulo\Git\Orszagok\Orszagok\Orszagok\bin\Debug\Orszagok.exe.config
+C:\Users\Tanulo\Git\Orszagok\Orszagok\Orszagok\bin\Debug\Orszagok.exe
+C:\Users\Tanulo\Git\Orszagok\Orszagok\Orszagok\bin\Debug\Orszagok.pdb
+C:\Users\Tanulo\Git\Orszagok\Orszagok\Orszagok\obj\Debug\Orszagok.csproj.AssemblyReference.cache
+C:\Users\Tanulo\Git\Orszagok\Orszagok\Orszagok\obj\Debug\Orszagok.csproj.CoreCompileInputs.cache
+C:\Users\Tanulo\Git\Orszagok\Orszagok\Orszagok\obj\Debug\Orszagok.exe
+C:\Users\Tanulo\Git\Orszagok\Orszagok\Orszagok\obj\Debug\Orszagok.pdb

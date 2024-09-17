@@ -14,7 +14,7 @@ namespace Orszagok
         {
             public string nev;
             public int terulet;
-            public int nepesseg;
+            public string nepesseg;
             public string fovaros;
             public int fovnepesseg;
 
@@ -23,20 +23,25 @@ namespace Orszagok
                 string[] orszagok = sor.Split(';');
                 this.nev = orszagok[0];
                 this.terulet = int.Parse(orszagok[1]);
-                this.nepesseg = int.Parse(orszagok[2]);
+                this.nepesseg = orszagok[2];
                 this.fovaros = orszagok[3];
                 this.fovnepesseg = int.Parse(orszagok[4]);
             }
         }
         static void Main(string[] args)
         {
-            List<Orszag> orszaglista = new List<Orszag>();
+            List<Orszag> dlista = new List<Orszag>();
             StreamReader sr = new StreamReader("adatok-utf8.txt");
-            
+
+            sr.ReadLine();
             while (!sr.EndOfStream)
             {
-                orszaglista.Add(new Orszag(sr.ReadLine()));
+                dlista.Add(new Orszag(sr.ReadLine()));
             }
+            sr.Close();
+            Console.WriteLine("4.Feladat:");
+            Console.WriteLine("Beolvasott országok száma: {0}",dlista.Count);
+            Console.ReadLine();
         }
     }
 }
