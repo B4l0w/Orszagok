@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +10,7 @@ namespace Orszagok
 {
     internal class Program
     {
-        class Orszagok
+        class Orszag
         {
             public string nev;
             public int terulet;
@@ -16,7 +18,7 @@ namespace Orszagok
             public string fovaros;
             public int fovnepesseg;
 
-            public Orszagok(string sor)
+            public Orszag(string sor)
             {
                 string[] orszagok = sor.Split(';');
                 this.nev = orszagok[0];
@@ -28,6 +30,13 @@ namespace Orszagok
         }
         static void Main(string[] args)
         {
+            List<Orszag> orszaglista = new List<Orszag>();
+            StreamReader sr = new StreamReader("adatok-utf8.txt");
+            
+            while (!sr.EndOfStream)
+            {
+                orszaglista.Add(new Orszag(sr.ReadLine()));
+            }
         }
     }
 }
