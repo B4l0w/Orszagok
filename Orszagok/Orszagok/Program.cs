@@ -12,23 +12,38 @@ namespace Orszagok
     {
         class Orszag
         {
-            public string nev;
-            public int terulet;
-            public string nepesseg;
-            public string fovaros;
-            public int fovnepesseg;
+            public string Orszagnev { get; private set; }
+            public int Terulet { get; private set; }
+            public int Nepesseg { get; private set; }
+            public string Fovaros { get; private set; }
+            public int FovarosNepesseg { get; private set; }
 
             public Orszag(string sor)
             {
                 string[] orszagok = sor.Split(';');
-                this.nev = orszagok[0];
-                this.terulet = int.Parse(orszagok[1]);
-                this.nepesseg = orszagok[2];
-                this.fovaros = orszagok[3];
-                this.fovnepesseg = int.Parse(orszagok[4]);
+                Orszagnev = orszagok[0];
+                Terulet = int.Parse(orszagok[1]);
+                if (orszagok[2].Contains("g"))
+                {
+                    string szorzas = orszagok[2];
+                    Nepesseg = int.Parse(szorzas.Substring(0, szorzas.Length - 1)) * 10000;
+                }
+                else
+                {
+                    Nepesseg = int.Parse(orszagok[2]);
+                }
+                Fovaros = orszagok[3];
+                FovarosNepesseg = int.Parse(orszagok[4]) * 1000;
+            }
+            public int Nepsuruseg()
+            {
+                int nsuruseg;
+                nsuruseg = Nepesseg / Terulet;
+
+                return nsuruseg;
             }
         }
-        static void Main(string[] args)
+            static void Main(string[] args)
         {
             List<Orszag> dlista = new List<Orszag>();
             StreamReader sr = new StreamReader("adatok-utf8.txt");
@@ -41,6 +56,15 @@ namespace Orszagok
             sr.Close();
             Console.WriteLine("4.Feladat:");
             Console.WriteLine("Beolvasott országok száma: {0}",dlista.Count);
+
+            Console.WriteLine("5.Feladat:");
+            foreach (Orszag o in dlista)
+            {
+                if (o.Orszagnev == "Kína")
+                {
+                    Console.WriteLine("Kína népsűrűsége: {0} fő/km^2", o.Nepsuruseg());
+                }            
+            }
             Console.ReadLine();
         }
     }
