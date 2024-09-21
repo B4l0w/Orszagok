@@ -42,6 +42,20 @@ namespace Orszagok
 
                 return nsuruseg;
             }
+
+            public bool Meghaladjae()
+            {
+                bool ih;
+                if (Nepesseg * 0.3 <= FovarosNepesseg)
+                {
+                    ih = true;
+                }
+                else
+                {
+                    ih = false;
+                }
+                return ih;
+            }
         }
             static void Main(string[] args)
         {
@@ -55,18 +69,18 @@ namespace Orszagok
             }
             sr.Close();
             Console.WriteLine("3.Feladat:");
-            Console.WriteLine("Beolvasott országok száma: {0}",dlista.Count);
+            Console.WriteLine("Beolvasott országok száma: {0}.",dlista.Count);
 
-            Console.WriteLine("4.Feladat:");
+            Console.WriteLine("\n4.Feladat:");
             foreach (Orszag o in dlista)
             {
                 if (o.Orszagnev == "Kína")
                 {
-                    Console.WriteLine("Kína népsűrűsége: {0} fő/km^2", o.Nepsuruseg());
+                    Console.WriteLine("Kína népsűrűsége: {0} fő/km^2.", o.Nepsuruseg());
                 }            
             }
 
-            Console.WriteLine("5.Feladat");
+            Console.WriteLine("\n5.Feladat:");
             int indian = 0;
             int kinan = 0;
             foreach (Orszag o in dlista)
@@ -82,7 +96,7 @@ namespace Orszagok
             }
             Console.WriteLine("Kínában a lakosság {0} fővel volt több.",kinan-indian);
 
-            Console.WriteLine("6.Feladat:");
+            Console.WriteLine("\n6.Feladat:");
             int harmadiklegnepesebb = 0;
             for (int i = 0; i < dlista.Count; i++)
             {
@@ -92,6 +106,15 @@ namespace Orszagok
                 }
             }
             Console.WriteLine($"A harmadik legnépesebb ország: {dlista[harmadiklegnepesebb].Orszagnev}, a lakosság {dlista[harmadiklegnepesebb].Nepesseg} fő.");
+
+            Console.WriteLine("\n7.Feladat:");
+            foreach (Orszag o in dlista)
+            {
+                if (o.Meghaladjae())
+                {
+                    Console.WriteLine($"\t{o.Orszagnev} ({o.Fovaros})");
+                }
+            }
             Console.ReadLine();
         }
     }
