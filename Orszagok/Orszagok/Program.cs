@@ -65,6 +65,22 @@ namespace Orszagok
                     Console.WriteLine("Kína népsűrűsége: {0} fő/km^2", o.Nepsuruseg());
                 }            
             }
+
+            Console.WriteLine("6.Feladat");
+            int indian = 0;
+            int kinan = 0;
+            foreach (Orszag o in dlista)
+            {
+                if (o.Orszagnev == "Kína")
+                {
+                    kinan = o.Nepesseg;
+                }
+                if (o.Orszagnev == "India")
+                {
+                    indian = o.Nepesseg;
+                }
+            }
+            Console.WriteLine("Kínában a lakosság {0} fővel volt több.",kinan-indian);
             Console.ReadLine();
         }
     }
