@@ -54,10 +54,10 @@ namespace Orszagok
                 dlista.Add(new Orszag(sr.ReadLine()));
             }
             sr.Close();
-            Console.WriteLine("4.Feladat:");
+            Console.WriteLine("3.Feladat:");
             Console.WriteLine("Beolvasott országok száma: {0}",dlista.Count);
 
-            Console.WriteLine("5.Feladat:");
+            Console.WriteLine("4.Feladat:");
             foreach (Orszag o in dlista)
             {
                 if (o.Orszagnev == "Kína")
@@ -66,7 +66,7 @@ namespace Orszagok
                 }            
             }
 
-            Console.WriteLine("6.Feladat");
+            Console.WriteLine("5.Feladat");
             int indian = 0;
             int kinan = 0;
             foreach (Orszag o in dlista)
@@ -81,6 +81,17 @@ namespace Orszagok
                 }
             }
             Console.WriteLine("Kínában a lakosság {0} fővel volt több.",kinan-indian);
+
+            Console.WriteLine("6.Feladat:");
+            int harmadiklegnepesebb = 0;
+            for (int i = 0; i < dlista.Count; i++)
+            {
+                if (dlista[i].Orszagnev != "Kína" && dlista[i].Orszagnev != "India" && dlista[i].Nepesseg > dlista[harmadiklegnepesebb].Nepesseg)
+                {
+                    harmadiklegnepesebb = i;
+                }
+            }
+            Console.WriteLine($"A harmadik legnépesebb ország: {dlista[harmadiklegnepesebb].Orszagnev}, a lakosság {dlista[harmadiklegnepesebb].Nepesseg} fő.");
             Console.ReadLine();
         }
     }
